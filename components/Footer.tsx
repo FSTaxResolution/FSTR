@@ -40,8 +40,8 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: <FacebookIcon />, href: "https://facebook.com", label: "Facebook", hoverColor: "hover:text-[#1877F2] hover:border-[#1877F2]" },
-  { icon: <LinkedInIcon />, href: "https://linkedin.com", label: "LinkedIn", hoverColor: "hover:text-[#0A66C2] hover:border-[#0A66C2]" },
+  { icon: <FacebookIcon />, href: "https://www.facebook.com/fivestartaxresolution/", label: "Facebook", hoverColor: "hover:text-[#1877F2] hover:border-[#1877F2]" },
+  { icon: <LinkedInIcon />, href: "https://www.linkedin.com/company/five-star-tax/", label: "LinkedIn", hoverColor: "hover:text-[#0A66C2] hover:border-[#0A66C2]" },
   { icon: <YouTubeIcon />, href: "https://youtube.com", label: "YouTube", hoverColor: "hover:text-[#FF0000] hover:border-[#FF0000]" },
 ];
 
