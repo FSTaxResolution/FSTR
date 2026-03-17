@@ -41,13 +41,13 @@ export default function Header() {
             <span className="text-[10px] font-normal tracking-widest uppercase text-[#b0bec5]">
               Ranked #1 by
             </span>
-            <div className="h-[30px] overflow-hidden flex items-center">
+            <div className="h-grid-gap flex items-center">
               <Image
                 src="/images/forbes-white.png"
                 alt="Forbes"
-                width={152}
-                height={45}
-                className="h-[45px] w-auto brightness-0 invert"
+                width={120}
+                height={30}
+                className="h-grid-gap w-auto object-contain brightness-0 invert"
               />
             </div>
           </div>
