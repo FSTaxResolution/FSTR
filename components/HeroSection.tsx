@@ -1,4 +1,4 @@
-import LeadForm from "./LeadForm";
+import HomePageLeadForm from "./HomePageLeadForm";
 
 const checks = ["Expert Help", "Proven Results", "Ongoing Support"];
 
@@ -30,7 +30,7 @@ export default function HeroSection() {
         </div>
 
         <div className="flex justify-start lg:justify-end">
-          <LeadForm />
+          <HomePageLeadForm />
         </div>
 
       </div>

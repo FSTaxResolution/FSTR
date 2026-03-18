@@ -57,6 +57,7 @@ export default function Footer() {
             alt="Five Star Tax Resolution"
             width={180}
             height={60}
+            style={{ height: 'auto' }}
           />
 
           <p className="text-sm leading-relaxed text-sky/60 max-w-70">

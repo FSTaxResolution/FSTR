@@ -32,7 +32,7 @@ export default function Header() {
             alt="Five Star Tax Resolution"
             width={160}
             height={54}
-            className="h-[54px] w-auto object-contain"
+            className="h-13.5 w-auto object-contain"
           />
         </Link>
 
@@ -55,13 +55,13 @@ export default function Header() {
             <span className="text-[10px] font-normal tracking-widest uppercase text-[#b0bec5]">
               Featured on
             </span>
-            <div className="h-[30px] flex items-center">
+            <div className="h-grid-gap flex items-center">
               <Image
                 src="/images/fortune-white.png"
                 alt="Fortune"
                 width={118}
                 height={27}
-                className="h-[27px] w-auto object-contain brightness-0 invert"
+                className="h-6.75 w-auto object-contain brightness-0 invert"
               />
             </div>
           </div>
@@ -74,24 +74,24 @@ export default function Header() {
           {/* Services dropdown */}
           <li className="relative">
             <button
-              className="flex items-center gap-1.5 text-white text-[12px] font-medium tracking-[0.12em] uppercase cursor-pointer bg-transparent border-none p-0 transition-opacity duration-200 hover:opacity-75"
+              className="flex items-center gap-1.5 text-white text-xs font-medium tracking-[0.12em] uppercase cursor-pointer bg-transparent border-none p-0 transition-opacity duration-200 hover:opacity-75"
               onClick={() => setServicesOpen((o) => !o)}
             >
               Tax Services
               <span
-                className={`inline-block w-0 h-0 border-l-4 border-r-4 border-l-transparent border-r-transparent border-t-[5px] border-t-white transition-transform duration-200 ${
+                className={`inline-block w-0 h-0 border-l-4 border-r-4 border-l-transparent border-r-transparent border-t-1.25 border-t-white transition-transform duration-200 ${
                   servicesOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
             {servicesOpen && (
-              <div className="absolute top-[calc(100%+14px)] left-0 bg-[var(--color-midnight)] min-w-[200px] border-t-2 border-[var(--color-lime)] shadow-[0_8px_24px_rgba(0,0,0,0.3)] z-50 flex flex-col">
+              <div className="absolute top-[calc(100%+14px)] left-0 bg-midnight min-w-50 border-t-2 border-lime shadow-[0_8px_24px_rgba(0,0,0,0.3)] z-50 flex flex-col">
                 {services.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-[#e0e8ef] text-[12px] font-normal tracking-[0.08em] uppercase no-underline px-[18px] py-3 border-b border-white/5 last:border-b-0 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--color-lime)_12%,transparent)] hover:text-white"
+                    className="text-[#e0e8ef] text-xs font-normal tracking-[0.08em] uppercase no-underline px-container-padding py-3 border-b border-white/5 last:border-b-0 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--color-lime)_12%,transparent)] hover:text-white"
                   >
                     {item.label}
                   </Link>
@@ -101,17 +101,17 @@ export default function Header() {
           </li>
 
           <li>
-            <Link href="#" className="text-white text-[12px] font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+            <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
               About
             </Link>
           </li>
           <li>
-            <Link href="#" className="text-white text-[12px] font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+            <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
               Resources
             </Link>
           </li>
           <li>
-            <Link href="#" className="text-white text-[12px] font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+            <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
               Contact
             </Link>
           </li>
@@ -120,7 +120,7 @@ export default function Header() {
         {/* CTA */}
         <Link
           href="tel:+18005551234"
-          className="flex items-center gap-2.5 bg-white text-[#1a1a1a] text-[12px] font-bold tracking-[0.14em] uppercase no-underline px-[22px] py-3 transition-colors duration-200 hover:bg-[var(--color-fst-gray)] whitespace-nowrap"
+          className="flex items-center gap-2.5 bg-white text-[#1a1a1a] text-xs font-bold tracking-[0.14em] uppercase no-underline px-5.5 py-3 transition-colors duration-200 hover:bg-fst-gray whitespace-nowrap"
         >
           Call Now
           <PhoneIcon />
