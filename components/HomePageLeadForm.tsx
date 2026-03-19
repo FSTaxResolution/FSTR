@@ -117,7 +117,6 @@ export default function HomePageLeadForm() {
               pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
               maxLength={14}
               title="Please enter a valid 10-digit phone number"
-              placeholder="(XXX) XXX-XXXX"
               className="w-full border-0 border-b border-blue-secondary/40 bg-transparent px-0 py-2 text-white outline-none placeholder:text-sky/30 focus:border-lime transition-colors duration-200"
             />
           </div>

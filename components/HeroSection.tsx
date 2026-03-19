@@ -5,7 +5,7 @@ const checks = ["Expert Help", "Proven Results", "Ongoing Support"];
 export default function HeroSection() {
   return (
     <section className="bg-mist">
-      <div className="mx-auto w-full max-w-(--width-container) px-container-padding py-section grid grid-cols-1 lg:grid-cols-2 gap-grid-gap items-center min-h-[calc(100vh-80px)]">
+      <div className="mx-auto w-full max-w-(--width-container) px-container-padding pt-40 pb-section grid grid-cols-1 lg:grid-cols-2 gap-grid-gap items-center min-h-screen">
 
         <div>
           <h1 className="whitespace-nowrap">Millions Saved</h1>

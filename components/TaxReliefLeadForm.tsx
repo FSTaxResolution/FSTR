@@ -11,11 +11,17 @@ function formatPhone(value: string) {
   return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
 }
 
-interface ServicesLeadFormProps {
+interface TaxReliefLeadFormProps {
+  title?: string;
+  description?: string;
   onSubmit?: (data: Record<string, string>) => void;
 }
 
-export default function ServicesLeadForm({ onSubmit }: ServicesLeadFormProps) {
+export default function TaxReliefLeadForm({
+  title = "Qualify for Tax Relief Today",
+  description = "Our expert Tax Attorneys and CPAs are ready to help you navigate your IRS challenges. Complete the form to see if you qualify for IRS tax relief.",
+  onSubmit,
+}: TaxReliefLeadFormProps) {
   const [taxAmount, setTaxAmount] = useState("$10,000");
   const [phone, setPhone] = useState("");
 
@@ -27,37 +33,31 @@ export default function ServicesLeadForm({ onSubmit }: ServicesLeadFormProps) {
     onSubmit?.(Object.fromEntries(data) as Record<string, string>);
   }
 
-  const inputClass = "w-full bg-transparent border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none placeholder:text-white/35 focus:border-lime transition-colors duration-200";
+  const inputClass =
+    "w-full bg-transparent border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none placeholder:text-white/35 focus:border-lime transition-colors duration-200";
 
   return (
-    <section className="bg-navy px-20 py-section font-sans">
-      <div className="mx-auto max-w-336">
+    <section className="bg-midnight px-container-padding py-section font-sans border-b border-white/10">
+      <div className="mx-auto max-w-5xl text-center">
 
-      {/* Eyebrow + rule */}
-      <div className="mb-7">
+        {/* Eyebrow */}
         <p className="text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
           Get Started
         </p>
-        <hr className="border border-white" />
-      </div>
+        <hr className="border border-white/15 mb-10" />
 
-      {/* Heading */}
-      <h2 className="text-h2 font-semibold text-white mb-12">
-        Qualify for Tax Relief Today
-      </h2>
+        {/* Heading */}
+        <h2 className="text-[50px] font-semibold text-white mb-4 whitespace-nowrap w-screen relative left-1/2 -translate-x-1/2">
+          {title}
+        </h2>
 
-      {/* Two-column layout */}
-      <div className="grid grid-cols-[260px_1fr] gap-20 items-start">
-
-        {/* Left: description */}
-        <p className="text-body leading-normal text-white m-0">
-          Our expert Tax Attorneys and CPAs are ready to help you navigate your
-          IRS challenges. Complete the form to see if you qualify for IRS tax
-          relief.
+        {/* Description */}
+        <p className="text-body leading-relaxed text-white/70 mb-12 mx-auto">
+          {description}
         </p>
 
-        {/* Right: form */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-7 text-left">
 
           {/* Tax amount */}
           <div>
@@ -69,7 +69,7 @@ export default function ServicesLeadForm({ onSubmit }: ServicesLeadFormProps) {
               value={taxAmount}
               onChange={(e) => setTaxAmount(e.target.value)}
               required
-              className="w-full bg-navy border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none cursor-pointer focus:border-lime transition-colors duration-200 [&>option]:bg-navy [&>option]:text-white"
+              className="w-full bg-midnight border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none cursor-pointer focus:border-lime transition-colors duration-200 [&>option]:bg-midnight [&>option]:text-white"
             >
               {taxAmounts.map((v) => (
                 <option key={v} value={v}>{v}</option>
@@ -107,7 +107,7 @@ export default function ServicesLeadForm({ onSubmit }: ServicesLeadFormProps) {
             <input
               type="tel"
               name="phone"
-              placeholder="(XXX) XXX-XXXX"
+              placeholder="Phone"
               value={phone}
               onChange={(e) => setPhone(formatPhone(e.target.value))}
               pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
@@ -118,18 +118,17 @@ export default function ServicesLeadForm({ onSubmit }: ServicesLeadFormProps) {
             />
           </div>
 
-          {/* Submit — right aligned */}
-          <div className="flex justify-end">
+          {/* Submit — centered */}
+          <div className="flex justify-center">
             <button
               type="submit"
-              className="flex items-center gap-4 bg-white text-navy px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase hover:bg-lime transition-colors duration-200"
+              className="flex items-center gap-4 bg-white text-midnight px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase hover:bg-lime transition-colors duration-200"
             >
               Submit
             </button>
           </div>
 
         </form>
-      </div>
       </div>
     </section>
   );

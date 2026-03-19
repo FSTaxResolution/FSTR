@@ -11,19 +11,19 @@ const PhoneIcon = () => (
 );
 
 const services = [
-  { label: "IRS Tax Relief", href: "#" },
-  { label: "Offer in Compromise", href: "#" },
-  { label: "Installment Agreements", href: "#" },
-  { label: "Penalty Abatement", href: "#" },
-  { label: "Wage Garnishment Relief", href: "#" },
-  { label: "Tax Lien Removal", href: "#" },
+  { label: "Currently Non Collectible", href: "/tax-relief/currently-non-collectible" },
+  { label: "IRS Fresh Start Program", href: "/tax-relief/irs-fresh-start-program" },
+  { label: "Installment Agreement", href: "/tax-relief/irs-installment-agreement-services" },
+  { label: "Penalty Abatement", href: "/tax-relief/how-penalty-abatement-works" },
+  { label: "Offer In Compromise", href: "/tax-relief/offer-in-compromise" },
+  { label: "Truck Driver Back Taxes", href: "/tax-relief/truck-driver-back-taxes" },
 ];
 
 export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
-    <nav className="w-full font-sans" style={{ backgroundColor: "rgba(8, 37, 68, 0.1)", backdropFilter: "blur(20px)" }}>
+    <nav className="absolute top-0 left-0 w-full z-50 font-sans border-b border-white/10" style={{ backgroundColor: "rgba(8, 37, 68, 0.1)", backdropFilter: "blur(20px)" }}>
       {/* Top row: logo + press logos */}
       <div className="flex items-center justify-between px-12 pt-5 pb-3">
         <Link href="/">
@@ -53,7 +53,7 @@ export default function Header() {
           </div>
           <div className="flex flex-col items-center gap-0.5">
             <span className="text-[10px] font-normal tracking-widest uppercase text-[#b0bec5]">
-              Featured on
+              Ranked #1 by
             </span>
             <div className="h-grid-gap flex items-center">
               <Image
