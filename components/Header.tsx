@@ -10,13 +10,32 @@ const PhoneIcon = () => (
   </svg>
 );
 
-const services = [
-  { label: "Currently Non Collectible", href: "/tax-relief/currently-non-collectible" },
-  { label: "IRS Fresh Start Program", href: "/tax-relief/irs-fresh-start-program" },
-  { label: "Installment Agreement", href: "/tax-relief/irs-installment-agreement-services" },
-  { label: "Penalty Abatement", href: "/tax-relief/how-penalty-abatement-works" },
-  { label: "Offer In Compromise", href: "/tax-relief/offer-in-compromise" },
-  { label: "Truck Driver Back Taxes", href: "/tax-relief/truck-driver-back-taxes" },
+const serviceColumns = [
+  {
+    heading: "Tax Relief",
+    items: [
+      { label: "Currently Non Collectible", href: "/tax-relief/currently-non-collectible" },
+      { label: "IRS Fresh Start Program", href: "/tax-relief/irs-fresh-start-program" },
+      { label: "Installment Agreement", href: "/tax-relief/irs-installment-agreement-services" },
+      { label: "Penalty Abatement", href: "/tax-relief/how-penalty-abatement-works" },
+      { label: "Offer In Compromise", href: "/tax-relief/offer-in-compromise" },
+      { label: "Truck Driver Back Taxes", href: "/tax-relief/truck-driver-back-taxes" },
+    ],
+  },
+  {
+    heading: "Tax Help",
+    items: [
+      { label: "IRS Levy", href: "/tax-services/tax-help/irs-tax-levy" },
+      { label: "IRS Wage Garnishment", href: "/tax-services/tax-help/stop-irs-wage-garnishment" },
+      { label: "Unfiled Tax Returns", href: "/tax-services/tax-help/unfiled-tax-returns-non-filer"}
+    ],
+  },
+  {
+    heading: "Business Help",
+    items: [
+      { label: "Corporate Tax Prep", href: "/tax-services/business-help/corporate-tax-preparation-services" },
+    ],
+  },
 ];
 
 export default function Header() {
@@ -28,7 +47,7 @@ export default function Header() {
       <div className="flex items-center justify-between px-12 pt-5 pb-3">
         <Link href="/">
           <Image
-            src="/images/fivestartransparent.png"
+            src="/images/logos/fivestartransparent.png"
             alt="Five Star Tax Resolution"
             width={160}
             height={54}
@@ -43,7 +62,7 @@ export default function Header() {
             </span>
             <div className="h-grid-gap flex items-center">
               <Image
-                src="/images/forbes-white.png"
+                src="/images/logos/forbes-white.png"
                 alt="Forbes"
                 width={120}
                 height={30}
@@ -57,7 +76,7 @@ export default function Header() {
             </span>
             <div className="h-grid-gap flex items-center">
               <Image
-                src="/images/fortune-white.png"
+                src="/images/logos/fortune-white.png"
                 alt="Fortune"
                 width={118}
                 height={27}
@@ -70,12 +89,15 @@ export default function Header() {
 
       {/* Bottom row: nav links + CTA */}
       <div className="flex items-center justify-between px-12 pb-4">
-        <ul className="flex items-center gap-9 list-none m-0 p-0">
+        <div className="flex items-baseline gap-9">
           {/* Services dropdown */}
-          <li className="relative">
-            <button
-              className="flex items-center gap-1.5 text-white text-xs font-medium tracking-[0.12em] uppercase cursor-pointer bg-transparent border-none p-0 transition-opacity duration-200 hover:opacity-75"
+          <div className="relative">
+            <span
+              role="button"
+              tabIndex={0}
+              className="inline-flex items-center gap-1.5 text-white text-xs font-medium tracking-[0.12em] uppercase cursor-pointer transition-opacity duration-200 hover:opacity-75"
               onClick={() => setServicesOpen((o) => !o)}
+              onKeyDown={(e) => e.key === "Enter" && setServicesOpen((o) => !o)}
             >
               Tax Services
               <span
@@ -83,39 +105,40 @@ export default function Header() {
                   servicesOpen ? "rotate-180" : ""
                 }`}
               />
-            </button>
+            </span>
 
             {servicesOpen && (
-              <div className="absolute top-[calc(100%+14px)] left-0 bg-midnight min-w-50 border-t-2 border-lime shadow-[0_8px_24px_rgba(0,0,0,0.3)] z-50 flex flex-col">
-                {services.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="text-[#e0e8ef] text-xs font-normal tracking-[0.08em] uppercase no-underline px-container-padding py-3 border-b border-white/5 last:border-b-0 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--color-lime)_12%,transparent)] hover:text-white"
-                  >
-                    {item.label}
-                  </Link>
+              <div className="absolute top-[calc(100%+14px)] left-0 bg-midnight border-t-2 border-lime shadow-[0_8px_24px_rgba(0,0,0,0.3)] z-50 flex">
+                {serviceColumns.map((col) => (
+                  <div key={col.heading} className="min-w-52 flex flex-col">
+                    <span className="text-lime text-[10px] font-semibold tracking-[0.16em] uppercase px-container-padding pt-4 pb-2">
+                      {col.heading}
+                    </span>
+                    {col.items.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="text-[#e0e8ef] text-xs font-normal tracking-[0.08em] uppercase no-underline px-container-padding py-3 border-b border-white/5 last:border-b-0 transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--color-lime)_12%,transparent)] hover:text-white"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 ))}
               </div>
             )}
-          </li>
+          </div>
 
-          <li>
-            <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
-              Resources
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
-              Contact
-            </Link>
-          </li>
-        </ul>
+          <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+            About
+          </Link>
+          <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+            Resources
+          </Link>
+          <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+            Contact
+          </Link>
+        </div>
 
         {/* CTA */}
         <Link

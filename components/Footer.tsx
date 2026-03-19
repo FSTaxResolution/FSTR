@@ -53,7 +53,7 @@ export default function Footer() {
         {/* Left: Logo + description + social */}
         <div className="flex flex-col gap-6">
           <Image
-            src="/images/fivestartransparent.png"
+            src="/images/logos/fivestartransparent.png"
             alt="Five Star Tax Resolution"
             width={180}
             height={60}

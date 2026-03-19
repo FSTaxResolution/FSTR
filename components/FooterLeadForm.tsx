@@ -31,7 +31,7 @@ export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
 
   return (
     <section className="bg-navy px-20 py-section font-sans">
-      <div className="mx-auto max-w-336">
+      <div className="mx-auto max-w-(--width-container)">
 
       {/* Eyebrow + rule */}
       <div className="mb-7">

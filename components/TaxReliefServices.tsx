@@ -125,7 +125,13 @@ export default function TaxReliefServices() {
   return (
     <section className="bg-white px-container-padding py-section">
       <div className="mx-auto max-w-(--width-container)">
-        <h2 className="mb-10">Tax Relief Services</h2>
+        <p className="text-eyebrow tracking-[0.2em] uppercase text-lime font-semibold mb-3">
+          What We Offer
+        </p>
+        <hr className="border-navy/20 mb-6" />
+        <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }} className="leading-tight mb-10">
+          Tax Relief Services
+        </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-grid-gap">
           {services.map((service) => (
