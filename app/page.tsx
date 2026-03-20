@@ -7,19 +7,23 @@ import TeamOfExperts from "@/components/TeamOfExperts";
 import ClientReviews from "@/components/ClientReviews";
 import TrustLogoCarousel from "@/components/TrustLogoCarousel";
 
+export const metadata = {
+    title: "Home | Five Star Tax Resolution",
+};
+
 export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main>
-        <HeroSection />
-        <TrustLogoCarousel />
-        <TaxReliefServices />
-        <FourStepsCards />
-        <TeamOfExperts />
-        <ClientReviews />
-      </main>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="flex min-h-screen flex-col">
+            <Header />
+            <main>
+                <HeroSection />
+                <TrustLogoCarousel />
+                <TaxReliefServices />
+                <FourStepsCards />
+                <TeamOfExperts />
+                <ClientReviews />
+            </main>
+            <Footer />
+        </div>
+    );
 }
