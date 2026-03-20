@@ -1,3 +1,4 @@
+import { label } from "framer-motion/client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -32,7 +33,8 @@ const MailIcon = () => (
 );
 
 const navLinks = [
-    { label: "Terms of Service", href: "/terms" },
+    { label: "Terms of Service", href: "/terms-of-use" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "About Us", href: "/about" },
     { label: "Resources", href: "/resources" },
     { label: "Contact Us", href: "/contact" },

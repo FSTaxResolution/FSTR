@@ -129,23 +129,24 @@ export default function Header() {
                         )}
                     </div>
 
-                    <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+                    <Link href="/about" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
                         About
                     </Link>
-                    <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+                    <Link href="/resources" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
                         Resources
                     </Link>
-                    <Link href="#" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
+                    <Link href="/contact" className="text-white text-xs font-medium tracking-[0.12em] uppercase no-underline transition-opacity duration-200 hover:opacity-75">
                         Contact
                     </Link>
                 </div>
 
                 {/* CTA */}
                 <Link
-                    href="tel:+18005551234"
+                    href="tel:866-902-9123"
                     className="flex items-center gap-2.5 bg-white text-[#1a1a1a] text-xs font-bold tracking-[0.14em] uppercase no-underline px-5.5 py-3 transition-colors duration-200 hover:bg-fst-gray whitespace-nowrap"
                 >
-                    Call Now
+                    <span className="md:hidden">Call Now</span>
+                    <span className="hidden md:inline">866-902-9123</span>
                     <PhoneIcon />
                 </Link>
             </div>
