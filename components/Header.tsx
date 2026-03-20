@@ -38,7 +38,7 @@ const serviceColumns = [
     },
 ];
 
-export default function Header() {
+export default function Header({ phone = "(866) 902-9123" }: { phone?: string }) {
     const [servicesOpen, setServicesOpen] = useState(false);
 
     return (
@@ -142,11 +142,11 @@ export default function Header() {
 
                 {/* CTA */}
                 <Link
-                    href="tel:866-902-9123"
+                    href={`tel:${phone.replace(/[^\d+]/g, "")}`}
                     className="flex items-center gap-2.5 bg-white text-[#1a1a1a] text-xs font-bold tracking-[0.14em] uppercase no-underline px-5.5 py-3 transition-colors duration-200 hover:bg-fst-gray whitespace-nowrap"
                 >
                     <span className="md:hidden">Call Now</span>
-                    <span className="hidden md:inline">866-902-9123</span>
+                    <span className="hidden md:inline">{phone}</span>
                     <PhoneIcon />
                 </Link>
             </div>
