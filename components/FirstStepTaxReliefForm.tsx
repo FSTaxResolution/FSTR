@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const taxAmounts = ["$10,000", "$25,000", "$50,000", "$75,000", "$100,000+"];
 
@@ -56,79 +57,102 @@ export default function FirstStepTaxReliefForm({
                     {description}
                 </p>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="flex flex-col gap-7 text-left">
+                {/* Box-in-box form */}
+                <div className="bg-navy/40 backdrop-blur-xl rounded-2xl p-4 md:p-8 border border-white/5 shadow-2xl">
+                    <div className="bg-gradient-to-br from-midnight to-navy p-8 md:p-12 rounded-xl border border-white/10">
 
-                    {/* Tax amount */}
-                    <div>
-                        <p className="text-white text-body mb-2.5">
-                            What is the total amount of taxes you owe?
-                        </p>
-                        <select
-                            name="taxAmount"
-                            value={taxAmount}
-                            onChange={(e) => setTaxAmount(e.target.value)}
-                            required
-                            className="w-full bg-midnight border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none cursor-pointer focus:border-lime transition-colors duration-200 [&>option]:bg-midnight [&>option]:text-white"
-                        >
-                            {taxAmounts.map((v) => (
-                                <option key={v} value={v}>{v}</option>
-                            ))}
-                        </select>
+                        <div className="mb-10">
+                            <p className="text-eyebrow font-semibold text-lime uppercase tracking-[0.2em] mb-3">
+                                Qualify for Tax Relief Today
+                            </p>
+                            <p className="text-white/60 text-sm max-w-lg mx-auto">
+                                Complete the form below to see if you qualify for IRS tax relief through our expert legal and financial consultation.
+                            </p>
+                        </div>
+
+                        {/* Form */}
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-8 text-left">
+
+                            {/* Tax amount — full width */}
+                            <div>
+                                <label className="block text-xs font-semibold text-white/50 uppercase tracking-widest mb-4">
+                                    What is the total amount of taxes you owe?
+                                </label>
+                                <select
+                                    name="taxAmount"
+                                    value={taxAmount}
+                                    onChange={(e) => setTaxAmount(e.target.value)}
+                                    required
+                                    className="w-full bg-transparent border-0 border-b border-white/25 px-0 py-3 text-white text-body outline-none cursor-pointer focus:border-lime transition-colors duration-200 appearance-none [&>option]:bg-midnight [&>option]:text-white"
+                                >
+                                    {taxAmounts.map((v) => (
+                                        <option key={v} value={v}>{v}</option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            {/* First + Last name */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                <input
+                                    type="text"
+                                    name="firstName"
+                                    placeholder="First Name"
+                                    required
+                                    className={inputClass}
+                                />
+                                <input
+                                    type="text"
+                                    name="lastName"
+                                    placeholder="Last Name"
+                                    required
+                                    className={inputClass}
+                                />
+                            </div>
+
+                            {/* Email + Phone */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email Address"
+                                    required
+                                    className={inputClass}
+                                />
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="Phone"
+                                    value={phone}
+                                    onChange={(e) => setPhone(formatPhone(e.target.value))}
+                                    pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+                                    maxLength={14}
+                                    title="Please enter a valid 10-digit phone number"
+                                    required
+                                    className={inputClass}
+                                />
+                            </div>
+
+                            {/* Submit */}
+                            <div className="flex flex-col items-center gap-4 pt-6">
+                                <button
+                                    type="submit"
+                                    className="bg-lime text-midnight px-12 py-5 rounded-lg font-bold uppercase tracking-[0.15em] hover:bg-lime/80 hover:shadow-[0_0_30px_rgba(198,217,52,0.35)] transition-all shadow-xl"
+                                >
+                                    Submit for Qualification
+                                </button>
+                                {/* TEMP: preview thank-you page */}
+                                <Link
+                                    href="/thank-you"
+                                    className="text-white/40 text-xs underline hover:text-white/70 transition-colors"
+                                >
+                                    Preview Thank You Page →
+                                </Link>
+                            </div>
+
+                        </form>
                     </div>
+                </div>
 
-                    {/* First + Last name */}
-                    <div className="grid grid-cols-2 gap-8">
-                        <input
-                            type="text"
-                            name="firstName"
-                            placeholder="First Name"
-                            required
-                            className={inputClass}
-                        />
-                        <input
-                            type="text"
-                            name="lastName"
-                            placeholder="Last Name"
-                            required
-                            className={inputClass}
-                        />
-                    </div>
-
-                    {/* Email + Phone */}
-                    <div className="grid grid-cols-2 gap-8">
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            required
-                            className={inputClass}
-                        />
-                        <input
-                            type="tel"
-                            name="phone"
-                            placeholder="Phone"
-                            value={phone}
-                            onChange={(e) => setPhone(formatPhone(e.target.value))}
-                            pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
-                            maxLength={14}
-                            title="Please enter a valid 10-digit phone number"
-                            required
-                            className={inputClass}
-                        />
-                    </div>
-
-                    {/* Submit — centered */}
-                    <div className="flex justify-center">
-                        <button
-                            type="submit"
-                            className="flex items-center gap-4 bg-white text-midnight px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase hover:bg-lime transition-colors duration-200"
-                        >
-                            Submit
-                        </button>
-                    </div>
-
-                </form>
             </div>
         </section>
     );
