@@ -47,12 +47,12 @@ export default function TaxReliefLeadForm({
                 <hr className="border border-white/15 mb-10" />
 
                 {/* Heading */}
-                <h2 className="text-[50px] font-semibold text-white mb-4 whitespace-nowrap w-screen relative left-1/2 -translate-x-1/2">
+                <h2 className="text-2xl lg:text-[50px] font-semibold text-white mb-4 lg:whitespace-nowrap lg:w-screen lg:relative lg:left-1/2 lg:-translate-x-1/2">
                     {title}
                 </h2>
 
                 {/* Description */}
-                <p className="text-body leading-relaxed text-white/70 mb-12 mx-auto">
+                <p className="text-sm lg:text-body leading-relaxed text-white/70 mb-12 mx-auto">
                     {description}
                 </p>
 

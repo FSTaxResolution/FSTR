@@ -81,7 +81,7 @@ export default function FirstStepTaxReliefForm({
 
                 {/* Box-in-box form */}
                 <div className="bg-navy/40 backdrop-blur-xl rounded-2xl p-4 md:p-8 border border-white/5 shadow-2xl">
-                    <div className="bg-gradient-to-br from-midnight to-navy p-8 md:p-12 rounded-xl border border-white/10">
+                    <div className="bg-linear-to-br from-midnight to-navy p-8 md:p-12 rounded-xl border border-white/10">
 
                         <div className="mb-10">
                             <p className="text-eyebrow font-semibold text-lime uppercase tracking-[0.2em] mb-3">

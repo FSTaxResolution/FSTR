@@ -2,7 +2,7 @@ import { DEFAULT_PHONE, toTelHref } from "@/lib/partners";
 
 export default function ThankYou() {
     return (
-        <main className="min-h-screen flex items-center justify-center pt-40 pb-20 px-6 bg-gradient-to-br from-midnight to-navy relative overflow-hidden font-sans">
+        <main className="min-h-screen flex items-center justify-center pt-40 pb-20 px-6 bg-linear-to-br from-midnight to-navy relative overflow-hidden font-sans">
 
             {/* Box-in-box container */}
             <div className="relative z-10 w-full max-w-3xl">
