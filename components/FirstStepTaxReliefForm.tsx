@@ -17,12 +17,14 @@ function formatPhone(value: string) {
 interface FirstStepTaxReliefFormProps {
     title?: string;
     description?: string;
+    callPhone?: string;
     onSubmit?: (data: Record<string, string>) => void;
 }
 
 export default function FirstStepTaxReliefForm({
     title = "First Step Tax Relief",
     description = "Get A Complimentary Consultation with Our Licensed Tax Attorney.",
+    callPhone = "(866) 902-9123",
     onSubmit,
 }: FirstStepTaxReliefFormProps) {
     const [taxAmount, setTaxAmount] = useState("$10,000");
@@ -60,44 +62,44 @@ export default function FirstStepTaxReliefForm({
         "w-full bg-transparent border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none placeholder:text-white/35 focus:border-lime transition-colors duration-200";
 
     return (
-        <section className="bg-midnight px-container-padding py-section font-sans border-b border-white/10">
+        <section className="bg-midnight px-4 lg:px-container-padding pt-40 lg:pt-52 pb-section font-sans border-b border-white/10">
             <div className="mx-auto max-w-5xl text-center">
 
                 {/* Eyebrow */}
-                <p className="text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
+                <p className="text-[10px] lg:text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
                     Get Started
                 </p>
-                <hr className="border border-white/15 mb-10" />
+                <hr className="border border-white/15 mb-6 lg:mb-10" />
 
                 {/* Heading */}
-                <h2 className="text-[50px] font-semibold text-white mb-4 whitespace-nowrap">
+                <h2 className="text-xl lg:text-[50px] font-semibold text-white mb-3 lg:mb-4 lg:whitespace-nowrap">
                     {title}
                 </h2>
 
                 {/* Description */}
-                <p className="text-body leading-relaxed text-white/70 mb-12 mx-auto">
+                <p className="text-sm lg:text-body leading-relaxed text-white/70 mb-8 lg:mb-12 mx-auto">
                     {description}
                 </p>
 
                 {/* Box-in-box form */}
-                <div className="bg-navy/40 backdrop-blur-xl rounded-2xl p-4 md:p-8 border border-white/5 shadow-2xl">
-                    <div className="bg-linear-to-br from-midnight to-navy p-8 md:p-12 rounded-xl border border-white/10">
+                <div className="bg-navy/40 backdrop-blur-xl rounded-xl lg:rounded-2xl p-3 lg:p-8 border border-white/5 shadow-2xl">
+                    <div className="bg-linear-to-br from-midnight to-navy p-5 lg:p-12 rounded-lg lg:rounded-xl border border-white/10">
 
-                        <div className="mb-10">
-                            <p className="text-eyebrow font-semibold text-lime uppercase tracking-[0.2em] mb-3">
+                        <div className="mb-6 lg:mb-10">
+                            <p className="text-[10px] lg:text-eyebrow font-semibold text-lime uppercase tracking-[0.2em] mb-2 lg:mb-3">
                                 Qualify for Tax Relief Today
                             </p>
-                            <p className="text-white/60 text-sm max-w-lg mx-auto">
+                            <p className="text-white/60 text-xs lg:text-sm max-w-lg mx-auto">
                                 Complete the form below to see if you qualify for IRS tax relief through our expert legal and financial consultation.
                             </p>
                         </div>
 
                         {/* Form */}
-                        <form onSubmit={handleSubmit} className="flex flex-col gap-8 text-left">
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-5 lg:gap-8 text-left">
 
                             {/* Tax amount — full width */}
                             <div>
-                                <label className="block text-xs font-semibold text-white/50 uppercase tracking-widest mb-4">
+                                <label className="block text-[10px] lg:text-xs font-semibold text-white/50 uppercase tracking-widest mb-2 lg:mb-4">
                                     What is the total amount of taxes you owe?
                                 </label>
                                 <select
@@ -155,13 +157,22 @@ export default function FirstStepTaxReliefForm({
                             </div>
 
                             {/* Submit */}
-                            <div className="flex flex-col items-center gap-4 pt-6">
+                            <div className="flex flex-col items-center gap-3 lg:gap-4 pt-4 lg:pt-6">
                                 <button
                                     type="submit"
-                                    className="bg-lime text-midnight px-12 py-5 rounded-lg font-bold uppercase tracking-[0.15em] hover:bg-lime/80 hover:shadow-[0_0_30px_rgba(198,217,52,0.35)] transition-all shadow-xl"
+                                    className="bg-lime text-midnight px-8 py-3.5 lg:px-12 lg:py-5 rounded-lg text-sm lg:text-base font-bold uppercase tracking-[0.15em] hover:bg-lime/80 hover:shadow-[0_0_30px_rgba(198,217,52,0.35)] transition-all shadow-xl"
                                 >
                                     Submit for Qualification
                                 </button>
+                                <p className="text-sm text-white/60">
+                                    or call{" "}
+                                    <a
+                                        href={`tel:${callPhone.replace(/[^\d+]/g, "")}`}
+                                        className="text-lime hover:text-white transition-colors duration-200 no-underline font-semibold"
+                                    >
+                                        {callPhone}
+                                    </a>
+                                </p>
                                 {/* TEMP: preview thank-you page */}
                                 <Link
                                     href="/thank-you"

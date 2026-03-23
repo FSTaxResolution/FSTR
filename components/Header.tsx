@@ -208,7 +208,7 @@ export default function Header({ phone = "(866) 902-9123" }: { phone?: string })
                         </div>
                     </div>
 
-                    {/* Bottom row: logo left, hamburger right */}
+                    {/* Bottom row: logo left, call + hamburger right */}
                     <div className="flex items-center justify-between">
                         <Link href="/">
                             <Image
@@ -220,13 +220,22 @@ export default function Header({ phone = "(866) 902-9123" }: { phone?: string })
                                 style={{ height: "40px" }}
                             />
                         </Link>
-                        <button
-                            className="text-white p-1"
-                            onClick={() => setMenuOpen((o) => !o)}
-                            aria-label="Toggle menu"
-                        >
-                            <HamburgerIcon open={menuOpen} />
-                        </button>
+                        <div className="flex items-center gap-3">
+                            <Link
+                                href={`tel:${phone.replace(/[^\d+]/g, "")}`}
+                                className="flex items-center gap-2 bg-white text-[#1a1a1a] text-[10px] font-bold tracking-[0.14em] uppercase no-underline px-3.5 py-2 transition-colors duration-200 hover:bg-fst-gray"
+                            >
+                                Call Now
+                                <PhoneIcon />
+                            </Link>
+                            <button
+                                className="text-white p-1"
+                                onClick={() => setMenuOpen((o) => !o)}
+                                aria-label="Toggle menu"
+                            >
+                                <HamburgerIcon open={menuOpen} />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -279,14 +288,6 @@ export default function Header({ phone = "(866) 902-9123" }: { phone?: string })
                             Contact
                         </Link>
 
-                        {/* Call CTA */}
-                        <Link
-                            href={`tel:${phone.replace(/[^\d+]/g, "")}`}
-                            className="flex items-center justify-center gap-2.5 bg-white text-[#1a1a1a] text-xs font-bold tracking-[0.14em] uppercase no-underline px-5.5 py-3 mt-5 transition-colors duration-200 hover:bg-fst-gray"
-                        >
-                            Call Now
-                            <PhoneIcon />
-                        </Link>
                     </div>
                 )}
             </div>
