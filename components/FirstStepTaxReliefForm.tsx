@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTrackingParams } from "@/lib/useTrackingParams";
 
 const taxAmounts = ["$10,000", "$25,000", "$50,000", "$75,000", "$100,000+"];
 
@@ -25,13 +27,33 @@ export default function FirstStepTaxReliefForm({
 }: FirstStepTaxReliefFormProps) {
     const [taxAmount, setTaxAmount] = useState("$10,000");
     const [phone, setPhone] = useState("");
+    const router = useRouter();
+    const tracking = useTrackingParams();
 
-    function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+    async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         const digits = (data.get("phone") as string).replace(/\D/g, "");
         data.set("phone", digits);
-        onSubmit?.(Object.fromEntries(data) as Record<string, string>);
+
+        const payload = {
+            ...(Object.fromEntries(data) as Record<string, string>),
+            pageUrl: window.location.href,
+            transactionId: tracking.transactionId,
+            partnerId: tracking.partnerId,
+            sub1: tracking.sub1,
+            sub2: tracking.sub2,
+        };
+
+        onSubmit?.(payload);
+
+        await fetch("/api/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
+
+        router.push("/thank-you");
     }
 
     const inputClass =
