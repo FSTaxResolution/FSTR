@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 
 const LOGICS_API_KEY = process.env.LOGICS_API_KEY!;
 const TUNE_URL = process.env.TUNE_URL!;
-const TUNE_OFFER_ID = process.env.TUNE_OFFER_ID!;
+const TUNE_OFFER_ID = "24";
 
 const PARTNER_MAP: Record<string, number> = {
     "11": 219, // Best Money
