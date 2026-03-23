@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import FortuneHeader from "@/components/FortuneHeader";
 import FortuneFooter from "@/components/FortuneFooter";
+import FortuneFAQ from "@/components/FortuneFAQ";
 
 const graphikCompact = localFont({
     src: [
@@ -19,12 +19,11 @@ export const metadata = {
 export default function FortunePage() {
     return (
         <div className={`${graphikCompact.variable} font-sans text-navy`}>
-            <Header />
-            <div className="pt-36" />
+            <FortuneHeader />
 
             {/* Title Section */}
-            <div className="bg-white text-center px-6 py-8" style={{ fontFamily: "var(--font-graphik-compact)" }}>
-                <h1 className="text-h3 font-semibold text-gray-900 mb-3">
+            <div className="bg-white text-center px-4 py-4 lg:px-6 lg:py-6" style={{ fontFamily: "var(--font-graphik-compact)" }}>
+                <h1 className="text-h3 font-semibold text-gray-900 mb-2">
                     Top Rated Tax Relief Company of 2026
                 </h1>
                 <p className="text-[30px] font-normal text-gray-600 max-w-2xl mx-auto">
@@ -32,7 +31,7 @@ export default function FortunePage() {
                 </p>
             </div>
 
-            <div className="flex justify-center px-6 py-8">
+            <div className="flex justify-center px-4 py-4 lg:px-6 lg:py-6">
                 <div
                     style={{
                         width: "100%",
@@ -53,10 +52,10 @@ export default function FortunePage() {
                     />
                 </div>
             </div>
+            <FortuneFAQ />
             <div style={{ fontFamily: "var(--font-graphik-compact)" }}>
                 <FortuneFooter />
             </div>
-            <Footer />
         </div>
     );
 }
