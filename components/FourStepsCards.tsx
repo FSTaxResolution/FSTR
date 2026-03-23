@@ -63,25 +63,25 @@ function StepCard({
             }}
             className="bg-white shadow-sm"
         >
-            <div className="relative flex items-center min-h-87.5 px-12 py-16 md:px-20 md:py-20">
+            <div className="relative flex items-center min-h-48 lg:min-h-87.5 px-5 py-8 lg:px-20 lg:py-20">
                 {/* Ghost number */}
                 <span
-                    className="absolute left-8 top-1/2 -translate-y-1/2 select-none pointer-events-none font-bold leading-none text-white md:left-14"
-                    style={{ fontSize: "clamp(140px, 18vw, 220px)", WebkitTextStroke: "2px #082544", WebkitTextFillColor: "white" }}
+                    className="absolute left-4 lg:left-14 top-1/2 -translate-y-1/2 select-none pointer-events-none font-bold leading-none"
+                    style={{ fontSize: "clamp(65px, 18vw, 220px)", WebkitTextStroke: "2px #082544", WebkitTextFillColor: "white" }}
                     aria-hidden="true"
                 >
                     {step.number}
                 </span>
 
                 {/* Text content */}
-                <div className="ml-auto w-full pl-4 md:w-[58%]">
-                    <p className="text-eyebrow tracking-[0.2em] uppercase text-lime font-semibold mb-3">
+                <div className="ml-auto w-[70%] lg:w-[58%] pl-2 lg:pl-4">
+                    <p className="text-[10px] lg:text-eyebrow tracking-[0.2em] uppercase text-lime font-semibold mb-2 lg:mb-3">
                         {step.eyebrow}
                     </p>
-                    <h4 className="mb-1 leading-snug">
+                    <h4 className="mb-1 leading-snug text-base lg:text-h4">
                         {step.title}
                     </h4>
-                    <p className="text-body-text text-sm">{step.description}</p>
+                    <p className="text-body-text text-xs lg:text-sm">{step.description}</p>
                 </div>
             </div>
         </motion.div>
@@ -90,7 +90,7 @@ function StepCard({
 
 export default function FourStepsCards() {
     return (
-        <section className="bg-fst-gray px-container-padding py-section font-sans">
+        <section className="relative bg-fst-gray px-container-padding py-section font-sans">
             {/* Header */}
             <div className="max-w-(--width-container) mx-auto mb-10 flex items-start justify-between">
                 <div>
@@ -110,7 +110,7 @@ export default function FourStepsCards() {
             </div>
 
             {/* Stacked cards */}
-            <div className="max-w-(--width-container) mx-auto flex flex-col gap-10">
+            <div className="relative max-w-(--width-container) mx-auto flex flex-col gap-10">
                 {steps.map((step, i) => (
                     <StepCard
                         key={step.number}
