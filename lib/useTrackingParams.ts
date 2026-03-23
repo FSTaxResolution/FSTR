@@ -13,7 +13,8 @@ export type TrackingParams = {
 };
 
 function getValue(key: string, qs: URLSearchParams): string {
-    return qs.get(key) || localStorage.getItem(key) || "";
+    const stored = typeof window !== "undefined" ? localStorage.getItem(key) : "";
+    return qs.get(key) || stored || "";
 }
 
 export function useTrackingParams(): TrackingParams {

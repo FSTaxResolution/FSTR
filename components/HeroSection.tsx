@@ -8,13 +8,13 @@ export default function HeroSection() {
             <div className="mx-auto w-full max-w-(--width-container) px-container-padding pt-40 pb-section grid grid-cols-1 lg:grid-cols-2 gap-grid-gap items-center min-h-screen">
 
                 <div>
-                    <h1 className="whitespace-nowrap">Millions Saved</h1>
+                    <h1 className="lg:whitespace-nowrap">Millions Saved</h1>
 
                     <p className="text-h3 font-light leading-none text-navy mt-2">
                         In Back Taxes
                     </p>
 
-                    <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-body text-body-text">
+                    <div className="mt-6 lg:mt-10 flex flex-wrap gap-x-4 lg:gap-x-8 gap-y-4 text-sm lg:text-body text-body-text">
                         {checks.map((item) => (
                             <div key={item} className="flex items-center gap-2">
                                 <span className="text-lime font-semibold">✓</span>
@@ -23,7 +23,7 @@ export default function HeroSection() {
                         ))}
                     </div>
 
-                    <p className="mt-6 max-w-xl">
+                    <p className="mt-4 lg:mt-6 text-sm lg:text-body max-w-xl">
                         Strategic tax solutions tailored to your needs. Book a consultation
                         with our experts today.
                     </p>

@@ -23,12 +23,12 @@ export default function HomePageLeadForm() {
     }
 
     return (
-        <div className="w-full max-w-md bg-navy px-8 py-10 text-white font-sans">
-            <h2 className="text-h4 font-semibold leading-snug tracking-tight text-white">
+        <div className="w-full max-w-md bg-navy px-5 py-6 lg:px-8 lg:py-10 text-white font-sans">
+            <h2 className="text-lg lg:text-h4 font-semibold leading-snug tracking-tight text-white">
                 Qualify for tax relief today!
             </h2>
 
-            <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+            <form onSubmit={handleSubmit} className="mt-5 lg:mt-8 space-y-4 lg:space-y-6">
                 <div>
                     <label
                         htmlFor="message"
@@ -124,7 +124,7 @@ export default function HomePageLeadForm() {
 
                 <button
                     type="submit"
-                    className="flex w-full items-center justify-between bg-white px-6 py-4 text-sm font-semibold uppercase tracking-widest text-midnight transition-colors duration-200 hover:bg-lime"
+                    className="flex w-full items-center justify-between bg-white px-4 py-3 lg:px-6 lg:py-4 text-xs lg:text-sm font-semibold uppercase tracking-widest text-midnight transition-colors duration-200 hover:bg-lime"
                 >
                     <span>Get Free Consultation</span>
                 </button>

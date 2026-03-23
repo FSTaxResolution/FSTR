@@ -50,10 +50,10 @@ const socialLinks = [
 export default function Footer() {
     return (
         <footer className="bg-midnight border-t border-blue-secondary/30 text-sky/60 font-sans">
-            <div className="mx-auto w-full max-w-(--width-container) px-container-padding py-section flex justify-between items-start">
+            <div className="mx-auto w-full max-w-(--width-container) px-container-padding py-12 lg:py-section flex flex-col items-center text-center lg:flex-row lg:justify-between lg:items-start lg:text-left gap-10 lg:gap-0">
 
-                {/* Left: Logo + description + social */}
-                <div className="flex flex-col gap-6">
+                {/* Logo + description + social */}
+                <div className="flex flex-col items-center lg:items-start gap-6">
                     <Image
                         src="/images/logos/fivestartransparent.png"
                         alt="Five Star Tax Resolution"
@@ -81,10 +81,10 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Right group: Nav + Contact */}
-                <div className="flex gap-24 items-start">
-                    {/* Center: Nav links */}
-                    <nav className="flex flex-col gap-5">
+                {/* Nav + Contact */}
+                <div className="flex flex-col items-center lg:items-start lg:flex-row gap-10 lg:gap-24">
+                    {/* Nav links — 2-col grid on mobile, single column on desktop */}
+                    <nav className="grid grid-cols-2 gap-x-10 gap-y-4 lg:flex lg:flex-col lg:gap-5">
                         {navLinks.map(({ label, href }) => (
                             <Link
                                 key={label}
@@ -97,7 +97,7 @@ export default function Footer() {
                     </nav>
 
                     {/* Contact */}
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col items-center lg:items-start gap-6">
                         <h3 className="text-[13px] font-semibold tracking-[0.14em] text-white uppercase m-0">
                             Contact Us
                         </h3>
@@ -129,7 +129,7 @@ export default function Footer() {
 
             {/* Bottom bar */}
             <div className="border-t border-blue-secondary/30 mx-auto w-full max-w-(--width-container) px-container-padding py-5">
-                <p className="text-xs tracking-[0.06em] text-sky/30 uppercase m-0">
+                <p className="text-xs tracking-[0.06em] text-sky/30 uppercase m-0 text-center lg:text-left">
                     Copyright © 2025 Five Star Tax Resolution, All Rights Reserved
                 </p>
             </div>

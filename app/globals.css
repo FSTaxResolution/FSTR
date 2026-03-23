@@ -114,35 +114,60 @@
     line-height: 1.5;
   }
 
+  /* Mobile-first: base = small phones (<430px) */
   h1 {
-    font-size: 7.75rem;
+    font-size: 2.5rem;
     font-weight: 600;
     line-height: 1.25;
-    letter-spacing: -2.4px;
+    letter-spacing: -1.2px;
     color: #082544;
   }
 
   h2 {
-    font-size: 4.5rem;
+    font-size: 2rem;
     font-weight: 600;
     line-height: 1.25;
-    letter-spacing: -2.4px;
+    letter-spacing: -1.2px;
     color: #082544;
   }
 
   h3 {
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.25;
-    letter-spacing: -2.4px;
+    letter-spacing: -1px;
     color: #082544;
   }
 
   h4 {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.25;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     color: #082544;
+  }
+
+  /* Large phones (430px+) */
+  @media (min-width: 430px) {
+    h1 { font-size: 3rem; letter-spacing: -1.5px; }
+    h2 { font-size: 2.5rem; letter-spacing: -1.5px; }
+    h3 { font-size: 1.75rem; letter-spacing: -1.2px; }
+    h4 { font-size: 1.5rem; letter-spacing: -0.75px; }
+  }
+
+  /* Tablets (768px+) */
+  @media (min-width: 768px) {
+    h1 { font-size: 4.5rem; letter-spacing: -2px; }
+    h2 { font-size: 3.25rem; letter-spacing: -2px; }
+    h3 { font-size: 2.25rem; letter-spacing: -1.5px; }
+    h4 { font-size: 1.75rem; letter-spacing: -1px; }
+  }
+
+  /* Desktop (1024px+) */
+  @media (min-width: 1024px) {
+    h1 { font-size: 7.75rem; letter-spacing: -2.4px; }
+    h2 { font-size: 4.5rem; letter-spacing: -2.4px; }
+    h3 { font-size: 3rem; letter-spacing: -2.4px; }
+    h4 { font-size: 1.75rem; letter-spacing: -1px; }
   }
 }
