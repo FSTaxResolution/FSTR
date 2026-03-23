@@ -37,14 +37,8 @@ export default function TaxReliefLeadForm({
         "w-full bg-transparent border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none placeholder:text-white/35 focus:border-lime transition-colors duration-200";
 
     return (
-        <section className="bg-midnight px-container-padding py-section font-sans border-b border-white/10">
+        <section className="bg-midnight px-container-padding pt-40 lg:pt-52 pb-section font-sans">
             <div className="mx-auto max-w-5xl text-center">
-
-                {/* Eyebrow */}
-                <p className="text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
-                    Get Started
-                </p>
-                <hr className="border border-white/15 mb-10" />
 
                 {/* Heading */}
                 <h2 className="text-2xl lg:text-[50px] font-semibold text-white mb-4 lg:whitespace-nowrap lg:w-screen lg:relative lg:left-1/2 lg:-translate-x-1/2">

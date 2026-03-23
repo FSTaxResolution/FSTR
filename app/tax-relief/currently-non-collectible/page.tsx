@@ -15,7 +15,6 @@ export default function CurrentlyNonCollectible() {
                 description="The quickest and easiest solution to solve your tax problems. The IRS/State will deem you uncollectible. No garnishments, bank levies or payment plans."
             />
 
-
             {/* ARTICLE BODY */}
             <section className="bg-white py-section">
                 <article className="max-w-6xl mx-auto px-container-padding">
