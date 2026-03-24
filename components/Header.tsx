@@ -223,9 +223,9 @@ export default function Header({ phone = "(866) 902-9123" }: { phone?: string })
                         <div className="flex items-center gap-3">
                             <Link
                                 href={`tel:${phone.replace(/[^\d+]/g, "")}`}
-                                className="flex items-center gap-2 bg-white text-[#1a1a1a] text-[10px] font-bold tracking-[0.14em] uppercase no-underline px-3.5 py-2 transition-colors duration-200 hover:bg-fst-gray"
+                                className="flex items-center justify-center bg-lime text-midnight w-14 h-9 rounded-lg transition-colors duration-200 hover:bg-lime/80"
+                                aria-label="Call Now"
                             >
-                                Call Now
                                 <PhoneIcon />
                             </Link>
                             <button
