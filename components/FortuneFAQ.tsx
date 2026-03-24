@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const faqs = [
     {
@@ -26,6 +26,9 @@ const faqs = [
 ];
 
 function FAQItem({ title, description, open, onToggle }: { title: string; description: string; open: boolean; onToggle: () => void }) {
+    const contentRef = useRef<HTMLDivElement>(null);
+    const height = open ? (contentRef.current?.scrollHeight ?? 0) : 0;
+
     return (
         <div className="border-b border-gray-200">
             <button
@@ -41,16 +44,16 @@ function FAQItem({ title, description, open, onToggle }: { title: string; descri
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="1.5"
-                    className={`text-gray-500 shrink-0 ml-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+                    className={`text-gray-500 shrink-0 ml-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
                 >
                     <polyline points="6 9 12 15 18 9" />
                 </svg>
             </button>
             <div
-                className="overflow-hidden transition-all duration-500 ease-in-out"
-                style={{ maxHeight: open ? "600px" : "0px", opacity: open ? 1 : 0 }}
+                className="overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out"
+                style={{ maxHeight: height, opacity: open ? 1 : 0 }}
             >
-                <div className="border-t border-gray-200 mx-4 pt-4 pb-5 text-base text-body-text leading-relaxed flex flex-col gap-4">
+                <div ref={contentRef} className="border-t border-gray-200 mx-4 pt-4 pb-5 text-base text-body-text leading-relaxed flex flex-col gap-4">
                     {description.split("\n\n").map((paragraph, i) => (
                         <p key={i}>{paragraph}</p>
                     ))}
