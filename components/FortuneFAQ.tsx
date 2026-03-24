@@ -47,8 +47,8 @@ function FAQItem({ title, description, open, onToggle }: { title: string; descri
                 </svg>
             </button>
             <div
-                className="overflow-hidden transition-all duration-300 ease-in-out"
-                style={{ maxHeight: open ? "500px" : "0px", opacity: open ? 1 : 0 }}
+                className="overflow-hidden transition-all duration-500 ease-in-out"
+                style={{ maxHeight: open ? "600px" : "0px", opacity: open ? 1 : 0 }}
             >
                 <div className="border-t border-gray-200 mx-4 pt-4 pb-5 text-base text-body-text leading-relaxed flex flex-col gap-4">
                     {description.split("\n\n").map((paragraph, i) => (
