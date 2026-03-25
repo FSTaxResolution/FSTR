@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import CCPAOptOutScript from "@/components/CCPAOptOutScript";
 import FortuneHeader from "@/components/FortuneHeader";
 import FortuneFooter from "@/components/FortuneFooter";
 import FortuneFAQ from "@/components/FortuneFAQ";
@@ -89,6 +90,7 @@ export default function FortunePage() {
             {/* Spacer for sticky footer height on mobile */}
             <div className="h-48 lg:hidden" />
             <FortuneStickyFooter />
+            <CCPAOptOutScript />
         </div>
     );
 }

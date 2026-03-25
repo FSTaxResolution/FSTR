@@ -1,4 +1,5 @@
 import Link from "next/link";
+import OneTrustButton from "./OneTrustButton";
 
 export default function FortuneFooter() {
     return (
@@ -14,7 +15,7 @@ export default function FortuneFooter() {
                 {" "}|{" "}
                 <Link href="https://fortune.com/privacy-policy/#ca-notice" className="text-[#0070c0] hover:underline">CA Notice at Collection and Privacy Notice</Link>
                 {" "}|{" "}
-                <Link href="/privacy-policy#do-not-sell" className="text-[#0070c0] hover:underline">Do Not Sell/Share My Personal Information</Link>
+                <OneTrustButton />
             </p>
             <p className="text-base text-gray-700 max-w-425 mx-auto">
                 FORTUNE is a trademark of Fortune Media IP Limited, registered in the U.S. and other countries. FORTUNE may receive compensation for some links to products and services on this website. Offers may be subject to change without notice. S&amp;P Index data is the property of Chicago Mercantile Exchange Inc. and it&apos;s licensors. All rights reserved.{" "}
