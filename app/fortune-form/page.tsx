@@ -16,6 +16,7 @@ const graphikCompact = localFont({
 
 export const metadata = {
     title: "Fortune Form | Five Star Tax Resolution",
+    robots: { index: false, follow: false },
 };
 
 export default function FortunePage() {

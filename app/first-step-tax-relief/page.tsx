@@ -11,6 +11,7 @@ import { getPartnerPhone } from "@/lib/partners";
 
 export const metadata = {
     title: "First Step Tax Relief | Five Star Tax Resolution",
+    robots: { index: false, follow: false },
 };
 
 export default async function FirstStepTaxRelief({
