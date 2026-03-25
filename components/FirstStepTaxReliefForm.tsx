@@ -160,7 +160,7 @@ export default function FirstStepTaxReliefForm({
                             <div className="flex flex-col items-center gap-3 lg:gap-4 pt-4 lg:pt-6">
                                 <button
                                     type="submit"
-                                    className="bg-lime text-midnight px-8 py-3.5 lg:px-12 lg:py-5 rounded-lg text-sm lg:text-base font-bold uppercase tracking-[0.15em] hover:bg-lime/80 hover:shadow-[0_0_30px_rgba(198,217,52,0.35)] transition-all shadow-xl"
+                                    className="bg-lime text-midnight px-8 py-3.5 lg:px-12 lg:py-5 rounded-[14px] text-sm lg:text-base font-bold uppercase tracking-[0.15em] hover:bg-lime/80 hover:shadow-[0_0_30px_rgba(198,217,52,0.35)] transition-all shadow-xl"
                                 >
                                     Submit for Qualification
                                 </button>

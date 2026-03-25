@@ -165,7 +165,7 @@ export default function Header({ phone = "(866) 902-9123" }: { phone?: string })
                     {/* CTA */}
                     <Link
                         href={`tel:${phone.replace(/[^\d+]/g, "")}`}
-                        className="flex items-center gap-2.5 bg-white text-[#1a1a1a] text-xs font-bold tracking-[0.14em] uppercase no-underline px-5.5 py-3 transition-colors duration-200 hover:bg-fst-gray whitespace-nowrap"
+                        className="flex items-center gap-2.5 bg-lime text-midnight text-xs font-bold tracking-[0.14em] uppercase no-underline px-5.5 py-3 rounded-[14px] transition-colors duration-200 hover:bg-lime/80 whitespace-nowrap"
                     >
                         <span className="hidden lg:inline">{phone}</span>
                         <PhoneIcon />

@@ -122,7 +122,7 @@ export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
                     <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="flex items-center gap-4 bg-white text-navy px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase hover:bg-lime transition-colors duration-200"
+                            className="flex items-center gap-4 bg-lime text-midnight px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase rounded-[14px] hover:bg-lime/80 transition-colors duration-200"
                         >
                             Submit
                         </button>

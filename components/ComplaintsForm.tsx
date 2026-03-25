@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-const taxAmounts = ["$10,000", "$25,000", "$50,000", "$75,000", "$100,000+"];
-
 function formatPhone(value: string) {
     const digits = value.replace(/\D/g, "").slice(0, 10);
     if (digits.length < 4) return digits;
@@ -11,18 +9,7 @@ function formatPhone(value: string) {
     return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
 }
 
-interface TaxReliefLeadFormProps {
-    title?: string;
-    description?: string;
-    onSubmit?: (data: Record<string, string>) => void;
-}
-
-export default function TaxReliefLeadForm({
-    title = "Qualify for Tax Relief Today",
-    description = "Our expert Tax Attorneys and CPAs are ready to help you navigate your IRS challenges. Complete the form to see if you qualify for IRS tax relief.",
-    onSubmit,
-}: TaxReliefLeadFormProps) {
-    const [taxAmount, setTaxAmount] = useState("$10,000");
+export default function ComplaintsForm() {
     const [phone, setPhone] = useState("");
 
     function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
@@ -30,7 +17,8 @@ export default function TaxReliefLeadForm({
         const data = new FormData(e.currentTarget);
         const digits = (data.get("phone") as string).replace(/\D/g, "");
         data.set("phone", digits);
-        onSubmit?.(Object.fromEntries(data) as Record<string, string>);
+        // TODO: send to complaints/relationship management email
+        console.log(Object.fromEntries(data));
     }
 
     const inputClass =
@@ -40,36 +28,24 @@ export default function TaxReliefLeadForm({
         <section className="bg-midnight px-container-padding pt-40 lg:pt-52 pb-section font-sans">
             <div className="mx-auto max-w-5xl text-center">
 
+                {/* Eyebrow */}
+                <p className="text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
+                    Client Support
+                </p>
+                <hr className="border border-white/15 mb-10" />
+
                 {/* Heading */}
                 <h2 className="text-2xl lg:text-[50px] font-semibold text-white mb-4 lg:whitespace-nowrap lg:w-screen lg:relative lg:left-1/2 lg:-translate-x-1/2">
-                    {title}
+                    Relationship Management & Client Support
                 </h2>
 
                 {/* Description */}
                 <p className="text-sm lg:text-body leading-relaxed text-white/70 mb-12 mx-auto">
-                    {description}
+                    Your voice matters — We&apos;re Here to listen. At Five Star Tax Resolution, client satisfaction is our top priority. If you&apos;re experiencing any concerns, issues, or need clarity on your case, our Relationship Management Team is here to help.
                 </p>
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="flex flex-col gap-7 text-left">
-
-                    {/* Tax amount */}
-                    <div>
-                        <p className="text-white text-body mb-2.5">
-                            What is the total amount of taxes you owe?
-                        </p>
-                        <select
-                            name="taxAmount"
-                            value={taxAmount}
-                            onChange={(e) => setTaxAmount(e.target.value)}
-                            required
-                            className="w-full bg-midnight border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none cursor-pointer focus:border-lime transition-colors duration-200 [&>option]:bg-midnight [&>option]:text-white"
-                        >
-                            {taxAmounts.map((v) => (
-                                <option key={v} value={v}>{v}</option>
-                            ))}
-                        </select>
-                    </div>
 
                     {/* First + Last name */}
                     <div className="grid grid-cols-2 gap-8">
@@ -112,13 +88,22 @@ export default function TaxReliefLeadForm({
                         />
                     </div>
 
+                    {/* Message */}
+                    <textarea
+                        name="message"
+                        placeholder="Message"
+                        required
+                        rows={5}
+                        className={`${inputClass} resize-none`}
+                    />
+
                     {/* Submit — centered */}
                     <div className="flex justify-center">
                         <button
                             type="submit"
                             className="flex items-center gap-4 bg-lime text-midnight px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase rounded-[14px] hover:bg-lime/80 transition-colors duration-200"
                         >
-                            Submit
+                            Send
                         </button>
                     </div>
 
