@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTrackingParams } from "@/lib/useTrackingParams";
 
-const taxAmounts = ["$10,000", "$25,000", "$50,000", "$75,000", "$100,000+"];
+const taxAmounts = ["$10,000", "$10,000 - $20,000", "$50,000", "$75,000", "$100,000+"];
 
 function formatPhone(value: string) {
     const digits = value.replace(/\D/g, "").slice(0, 10);
