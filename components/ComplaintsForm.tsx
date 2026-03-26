@@ -28,12 +28,6 @@ export default function ComplaintsForm() {
         <section className="bg-midnight px-container-padding pt-40 lg:pt-52 pb-section font-sans">
             <div className="mx-auto max-w-5xl text-center">
 
-                {/* Eyebrow */}
-                <p className="text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
-                    Client Support
-                </p>
-                <hr className="border border-white/15 mb-10" />
-
                 {/* Heading */}
                 <h2 className="text-2xl lg:text-[50px] font-semibold text-white mb-4 lg:whitespace-nowrap lg:w-screen lg:relative lg:left-1/2 lg:-translate-x-1/2">
                     Relationship Management & Client Support
@@ -98,13 +92,22 @@ export default function ComplaintsForm() {
                     />
 
                     {/* Submit — centered */}
-                    <div className="flex justify-center">
+                    <div className="flex flex-col items-center gap-3">
                         <button
                             type="submit"
                             className="flex items-center gap-4 bg-lime text-midnight px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase rounded-[14px] hover:bg-lime/80 transition-colors duration-200"
                         >
                             Send
                         </button>
+                        <p className="text-sm text-white/60">
+                            or call our support line at {" "}
+                            <a
+                                href="tel:6262104902"
+                                className="text-lime hover:text-white transition-colors duration-200 no-underline font-semibold"
+                            >
+                                (626) 210-4902
+                            </a>
+                        </p>
                     </div>
 
                 </form>
