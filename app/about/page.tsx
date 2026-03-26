@@ -40,8 +40,9 @@ export default function AboutUs() {
                             Our mission is to resolve tax challenges with integrity and expertise,
                             empowering our clients to move forward with confidence and peace of mind.
                             We are equally committed to educating individuals and businesses about
-                            their options, providing the knowledge and tools they need to make informed
-                            financial decisions for a stronger future.
+                            their tax relief options from our team of tax attorneys. Five Star Tax Resolution 
+                            provides the knowledge, the tools, and the support that individuals needs to make
+                            informed financial decisions.
                         </p>
                     </div>
                 </div>

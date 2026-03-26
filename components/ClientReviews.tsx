@@ -181,7 +181,7 @@ export default function ClientReviews() {
                 <hr className="border-navy/20 mb-6" />
                 <div className="grid grid-cols-1 items-start gap-grid-gap lg:grid-cols-[1fr_1fr] mb-12">
                     <h2 style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }} className="leading-tight">
-                        Client Reviews
+                        Five Star Tax Client Reviews
                     </h2>
                     <p className="text-body-text text-body self-end lg:text-right">
                         The best way to showcase our commitment is through the experiences
