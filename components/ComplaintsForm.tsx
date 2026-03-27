@@ -11,14 +11,26 @@ function formatPhone(value: string) {
 
 export default function ComplaintsForm() {
     const [phone, setPhone] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(false);
 
-    function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+    async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         const digits = (data.get("phone") as string).replace(/\D/g, "");
         data.set("phone", digits);
-        // TODO: send to complaints/relationship management email
-        console.log(Object.fromEntries(data));
+
+        const res = await fetch("/api/complaints", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Object.fromEntries(data)),
+        });
+
+        if (res.ok) {
+            setSubmitted(true);
+        } else {
+            setError(true);
+        }
     }
 
     const inputClass =
@@ -37,6 +49,17 @@ export default function ComplaintsForm() {
                 <p className="text-sm lg:text-body leading-relaxed text-white/70 mb-12 mx-auto">
                     Your voice matters — We&apos;re Here to listen. At Five Star Tax Resolution, client satisfaction is our top priority. If you&apos;re experiencing any concerns, issues, or need clarity on your case, our Relationship Management Team is here to help.
                 </p>
+
+                {submitted && (
+                    <p className="text-lime font-semibold mb-6">
+                        Your message has been received. Our team will be in touch shortly.
+                    </p>
+                )}
+                {error && (
+                    <p className="text-red-400 mb-6">
+                        Something went wrong. Please try again or call us directly.
+                    </p>
+                )}
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="flex flex-col gap-7 text-left">
