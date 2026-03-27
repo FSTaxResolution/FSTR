@@ -61,7 +61,7 @@ function StepCard({
                 scale: isLast ? 1 : scale,
                 transformOrigin: "top center",
             }}
-            className="bg-white shadow-sm"
+            className="relative bg-white shadow-sm"
         >
             <div className="relative flex items-center min-h-48 lg:min-h-87.5 px-5 py-8 lg:px-20 lg:py-20">
                 {/* Ghost number */}

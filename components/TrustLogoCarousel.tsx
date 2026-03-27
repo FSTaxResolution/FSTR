@@ -4,45 +4,57 @@ import { useRef, useState, useEffect, useCallback } from "react";
 
 const trustLogos = [
     {
-        src: "https://www.fivestartaxresolution.com/wp-content/uploads/2024/07/images-2.png",
-        alt: "Google Reviews",
+        src: "/images/logos/google.png",
+        alt: "Google",
     },
     {
-        src: "https://1000logos.net/wp-content/uploads/2018/03/Yelp-Logo.png",
-        alt: "Yelp Reviews",
+        src: "/images/logos/yelp-logo.png",
+        alt: "Yelp",
     },
     {
-        src: "https://www.fivestartaxresolution.com/wp-content/uploads/2024/07/images-1.png",
-        alt: "BBB Accredited",
+        src: "/images/logos/forbes-black.png",
+        alt: "Forbes",
+    },
+    {
+        src: "/images/logos/fortune-black.png",
+        alt: "Fortune",
     },
     {
         src: "https://www.fivestartaxresolution.com/wp-content/uploads/2024/07/consumer-alliance-logo-1.webp",
-        alt: "Consumer Alliance",
+        alt: "Business Consumer Alliance",
     },
     {
-        src: "https://www.fivestartaxresolution.com/wp-content/uploads/2024/07/company_logo_4-ok67tfrc1xo2dqqv52gt8c9urjwyc4bect7burxr7c-1.png",
-        alt: "NAEA",
+        src: "/images/badges/consumeraffairsaccredited.png",
+        alt: "Consumer Affairs Accredited",
     },
     {
         src: "https://www.fivestartaxresolution.com/wp-content/uploads/2024/07/SAGE23-Banner-v2-400x224-1.png",
-        alt: "SAGE 2023",
+        alt: "Stevie Award Winner",
     },
     {
-        src: "https://www.fivestartaxresolution.com/wp-content/uploads/2024/07/company_logo_1-ok67uqr9jngei8ulims5p0ewgthb0zhz79tlum02k8-1.png",
-        alt: "ASTPS",
+        alt: "BBB Accredited Business",
+        iframe: "https://seal-central-northern-western-arizona.bbb.org/frame/sehzbus/bbb-1000158427.png?chk=8CA7800BC1",
     },
 ];
 
 const GAP = 48;
 
-const LogoItem = ({ src, alt }: { src: string; alt: string }) => (
+const LogoItem = ({ src, alt, iframe }: { src?: string; alt: string; iframe?: string }) => (
     <div className="bg-white p-5 flex items-center justify-center h-24 w-40 shrink-0 select-none">
-        <img
-            src={src}
-            alt={alt}
-            className="max-h-full max-w-full object-contain pointer-events-none"
-            draggable={false}
-        />
+        {iframe ? (
+            <iframe
+                src={iframe}
+                title={alt}
+                style={{ border: 0, height: "38px", width: "100px", display: "block" }}
+            />
+        ) : (
+            <img
+                src={src}
+                alt={alt}
+                className="max-h-full max-w-full object-contain pointer-events-none"
+                draggable={false}
+            />
+        )}
     </div>
 );
 
