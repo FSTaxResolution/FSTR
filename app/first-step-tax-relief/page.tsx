@@ -30,6 +30,7 @@ export default async function FirstStepTaxRelief({
             {/* HERO + LEAD FORM */}
             {/* TODO Change Form */}
             <FirstStepTaxReliefForm
+                formType="dynamic"
                 title="See If You Qualify For Tax Relief Today!"
                 description="Get A Complimentary Consultation with Our Licensed Tax Attorney."
                 callPhone={phone}

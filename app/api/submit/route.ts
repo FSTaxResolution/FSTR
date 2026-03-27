@@ -4,13 +4,22 @@ import { supabase } from "@/lib/supabase";
 const LOGICS_API_KEY = process.env.LOGICS_API_KEY!;
 const TUNE_URL = process.env.TUNE_URL!;
 const TUNE_OFFER_ID = "24";
+const TEAM_ID = "5";
+const DISTRIBUTION_ID = "2";
 
 const PARTNER_MAP: Record<string, number> = {
-    "11": 219, // Best Money
-    "12": 223, // Top Rated Tax
-    "13": 226, // Test Source
-    "1":  227, // Test Source 2
+    "3": 226, // Test Source
+    "1": 227, // Test Source 2
+    "11": 219, // Best Money = Natural Intelligence
+    "12": 223, // Top Rated Tax = MoonShot
+    "14": 232, // Webtronic
+    "15": 235, // Applied Mind
+    "16": 228, // Forbes Content Hub
+    '17': 237, // Natural Intelligence
+    '18': 239 //SaaSmart
 };
+
+const STATES_LEAD_PROVIDER_ID = 196;
 
 function logicsBodyHasError(body: string): boolean {
     const lc = body.toLowerCase();
@@ -28,7 +37,7 @@ export async function POST(req: NextRequest) {
     const userAgent = req.headers.get("user-agent") ?? "unknown";
 
     const {
-        firstName, lastName, email, phone, taxAmount,
+        formType, firstName, lastName, email, phone, taxAmount,
         pageUrl, transactionId, sub1, sub2, partnerId,
     } = body;
 
@@ -54,11 +63,16 @@ export async function POST(req: NextRequest) {
     }
 
     // ── 2. IRS Logics ─────────────────────────────────────────────
-    const leadProviderId = PARTNER_MAP[partnerId];
+    let leadProviderId: number | undefined;
 
-    if (!leadProviderId) {
-        // Organic / unknown partner — skip Logics + TUNE
-        return NextResponse.json({ success: true });
+    if (formType === "states") {
+        leadProviderId = STATES_LEAD_PROVIDER_ID;
+    } else {
+        // dynamic — map partnerId to lead provider, skip if unknown
+        leadProviderId = PARTNER_MAP[partnerId];
+        if (!leadProviderId) {
+            return NextResponse.json({ success: true });
+        }
     }
 
     const logicsPayload = new URLSearchParams({
@@ -67,9 +81,10 @@ export async function POST(req: NextRequest) {
         EMAIL:            email,
         CELL_PHONE:       phone,
         LEAD_PROVIDER_ID: String(leadProviderId),
+        TEAMID:           TEAM_ID,
         UDF83:            taxAmount,
+        DISTRIBUTIONID:  DISTRIBUTION_ID,
         ...(transactionId ? { UDF120: transactionId } : {}),
-        // UDF92: only for provider 223 (Top Rated Tax) — add uniqueId here if needed
     });
 
     const logicsResp = await fetch(
@@ -84,13 +99,15 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ success: false, stage: "logics" }, { status: 502 });
     }
 
-    // ── 3. TUNE (only fires after confirmed Logics success) ───────
-    const tuneParams = new URLSearchParams({ offer_id: TUNE_OFFER_ID });
-    if (transactionId) tuneParams.set("transaction_id", transactionId);
+    // ── 3. TUNE (dynamic only, after confirmed Logics success) ────
+    if (formType === "dynamic") {
+        const tuneParams = new URLSearchParams({ offer_id: TUNE_OFFER_ID });
+        if (transactionId) tuneParams.set("transaction_id", transactionId);
 
-    const tuneResp = await fetch(`${TUNE_URL}?${tuneParams}`);
-    if (!tuneResp.ok) {
-        console.error("TUNE error:", tuneResp.status);
+        const tuneResp = await fetch(`${TUNE_URL}?${tuneParams}`);
+        if (!tuneResp.ok) {
+            console.error("TUNE error:", tuneResp.status);
+        }
     }
 
     return NextResponse.json({ success: true });

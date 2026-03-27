@@ -15,6 +15,7 @@ function formatPhone(value: string) {
 }
 
 interface FirstStepTaxReliefFormProps {
+    formType: "dynamic" | "states";
     title?: string;
     description?: string;
     callPhone?: string;
@@ -22,6 +23,7 @@ interface FirstStepTaxReliefFormProps {
 }
 
 export default function FirstStepTaxReliefForm({
+    formType,
     title = "First Step Tax Relief",
     description = "Get A Complimentary Consultation with Our Licensed Tax Attorney.",
     callPhone = "(866) 902-9123",
@@ -40,6 +42,7 @@ export default function FirstStepTaxReliefForm({
 
         const payload = {
             ...(Object.fromEntries(data) as Record<string, string>),
+            formType,
             pageUrl: window.location.href,
             transactionId: tracking.transactionId,
             partnerId: tracking.partnerId,

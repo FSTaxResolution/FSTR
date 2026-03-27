@@ -29,8 +29,10 @@ export default async function FirstStepTaxReliefStates({
             {/* HERO + LEAD FORM */}
             {/* TODO Change Form */}
             <FirstStepTaxReliefForm
+                formType="states"
                 title="See If You Qualify For Tax Relief Today!"
                 description="Get A Complimentary Consultation with Our Licensed Tax Attorney."
+                callPhone={phone}
             />
             {/* Expert help, Proven Results + badges TODO */}
 
