@@ -33,38 +33,38 @@ export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
     const inputClass = "w-full bg-transparent border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none placeholder:text-white/35 focus:border-lime transition-colors duration-200";
 
     return (
-        <section className="bg-navy px-20 py-section font-sans">
+        <section className="bg-navy px-4 lg:px-20 py-12 lg:py-section font-sans">
             <div className="mx-auto max-w-(--width-container)">
 
             {/* Eyebrow + rule */}
-            <div className="mb-7">
-                <p className="text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
+            <div className="mb-5 lg:mb-7">
+                <p className="text-[10px] lg:text-eyebrow font-light tracking-[0.18em] uppercase text-lime mb-2.5">
                     Get Started
                 </p>
                 <hr className="border border-white" />
             </div>
 
             {/* Heading */}
-            <h2 className="text-h2 font-semibold text-white mb-12">
+            <h2 className="text-xl lg:text-h2 font-semibold text-white mb-6 lg:mb-12">
                 Qualify for Tax Relief Today
             </h2>
 
             {/* Two-column layout */}
-            <div className="grid grid-cols-[260px_1fr] gap-20 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 lg:gap-20 items-start">
 
                 {/* Left: description */}
-                <p className="text-body leading-normal text-white m-0">
+                <p className="text-sm lg:text-body leading-relaxed text-white/70 lg:text-white m-0">
                     Our expert Tax Attorneys and CPAs are ready to help you navigate your
                     IRS challenges. Complete the form to see if you qualify for IRS tax
                     relief.
                 </p>
 
                 {/* Right: form */}
-                <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-5 lg:gap-7">
 
                     {/* Tax amount */}
                     <div>
-                        <p className="text-white text-body mb-2.5">
+                        <p className="text-white text-sm lg:text-body mb-2.5">
                             What is the total amount of taxes you owe?
                         </p>
                         <select
@@ -81,7 +81,7 @@ export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
                     </div>
 
                     {/* First + Last name */}
-                    <div className="grid grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8">
                         <input
                             type="text"
                             name="firstName"
@@ -99,7 +99,7 @@ export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
                     </div>
 
                     {/* Email + Phone */}
-                    <div className="grid grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8">
                         <input
                             type="email"
                             name="email"
@@ -137,8 +137,8 @@ export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
                         </span>
                     </label>
 
-                    {/* Submit — right aligned */}
-                    <div className="flex justify-end">
+                    {/* Submit */}
+                    <div className="flex justify-center lg:justify-end">
                         <button
                             type="submit"
                             disabled={loading}
