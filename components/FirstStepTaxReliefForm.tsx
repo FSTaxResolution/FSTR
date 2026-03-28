@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTrackingParams } from "@/lib/useTrackingParams";
 
-const taxAmounts = ["$10,000", "$10,000 - $20,000", "$50,000", "$75,000", "$100,000+"];
+const taxAmounts = ["$0 - $10,000", "$10,001 - $20,000", "$20,001 - $30,000", "30,001 - $40,000", "50,001 - $75,000", "$75,001 - $100,000", "$100,001 - 200,000", "$200,001 - $300,000", "$400,001 - $500,000", "$500,001 and over"];
 
 function formatPhone(value: string) {
     const digits = value.replace(/\D/g, "").slice(0, 10);
@@ -31,11 +31,13 @@ export default function FirstStepTaxReliefForm({
 }: FirstStepTaxReliefFormProps) {
     const [taxAmount, setTaxAmount] = useState("$10,000");
     const [phone, setPhone] = useState("");
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
     const tracking = useTrackingParams();
 
     async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
+        setLoading(true);
         const data = new FormData(e.currentTarget);
         const digits = (data.get("phone") as string).replace(/\D/g, "");
         data.set("phone", digits);
@@ -159,13 +161,36 @@ export default function FirstStepTaxReliefForm({
                                 />
                             </div>
 
+                            {/* Consent */}
+                            <label className="flex items-start gap-3 cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    name="consent"
+                                    required
+                                    className="mt-1 h-4 w-4 accent-lime shrink-0"
+                                />
+                                <span className="text-xs leading-relaxed text-white/60">
+                                    By checking this box I agree that I am a US Resident over the age 18 and agree to the{" "}
+                                    <a href="/privacy-policy" className="text-lime hover:text-white transition-colors duration-200 underline">Privacy Policy</a>.
+                                    I understand that I may receive SMS text, calls and email messages from Five Star Tax Resolution and that message &amp; data rates may apply.
+                                    I understand these calls may be generated using an automated technology, and that my consent is not required to buy goods/services.
+                                </span>
+                            </label>
+
                             {/* Submit */}
                             <div className="flex flex-col items-center gap-3 lg:gap-4 pt-4 lg:pt-6">
                                 <button
                                     type="submit"
-                                    className="bg-lime text-midnight px-8 py-3.5 lg:px-12 lg:py-5 rounded-[14px] text-sm lg:text-base font-bold uppercase tracking-[0.15em] hover:bg-lime/80 hover:shadow-[0_0_30px_rgba(198,217,52,0.35)] transition-all shadow-xl"
+                                    disabled={loading}
+                                    className="flex items-center gap-3 bg-lime text-midnight px-8 py-3.5 lg:px-12 lg:py-5 rounded-[14px] text-sm lg:text-base font-bold uppercase tracking-[0.15em] hover:bg-lime/80 hover:shadow-[0_0_30px_rgba(198,217,52,0.35)] transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    Submit for Qualification
+                                    {loading && (
+                                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                        </svg>
+                                    )}
+                                    {loading ? "Submitting..." : "Submit for Qualification"}
                                 </button>
                                 <p className="text-sm text-white/60">
                                     or call{" "}

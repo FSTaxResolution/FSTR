@@ -18,13 +18,16 @@ interface FooterLeadFormProps {
 export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
     const [taxAmount, setTaxAmount] = useState("$10,000");
     const [phone, setPhone] = useState("");
+    const [loading, setLoading] = useState(false);
 
     function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
+        setLoading(true);
         const data = new FormData(e.currentTarget);
         const digits = (data.get("phone") as string).replace(/\D/g, "");
         data.set("phone", digits);
         onSubmit?.(Object.fromEntries(data) as Record<string, string>);
+        setLoading(false);
     }
 
     const inputClass = "w-full bg-transparent border-0 border-b border-white/25 px-0 py-2.5 text-white text-body outline-none placeholder:text-white/35 focus:border-lime transition-colors duration-200";
@@ -118,13 +121,36 @@ export default function FooterLeadForm({ onSubmit }: FooterLeadFormProps) {
                         />
                     </div>
 
+                    {/* Consent */}
+                    <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                            type="checkbox"
+                            name="consent"
+                            required
+                            className="mt-1 h-4 w-4 accent-lime shrink-0"
+                        />
+                        <span className="text-xs leading-relaxed text-white/60">
+                            By checking this box I agree that I am a US Resident over the age 18 and agree to the{" "}
+                            <a href="/privacy-policy" className="text-lime hover:text-white transition-colors duration-200 underline">Privacy Policy</a>.
+                            I understand that I may receive SMS text, calls and email messages from Five Star Tax Resolution and that message &amp; data rates may apply.
+                            I understand these calls may be generated using an automated technology, and that my consent is not required to buy goods/services.
+                        </span>
+                    </label>
+
                     {/* Submit — right aligned */}
                     <div className="flex justify-end">
                         <button
                             type="submit"
-                            className="flex items-center gap-4 bg-lime text-midnight px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase rounded-[14px] hover:bg-lime/80 transition-colors duration-200"
+                            disabled={loading}
+                            className="flex items-center gap-4 bg-lime text-midnight px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase rounded-[14px] hover:bg-lime/80 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Submit
+                            {loading && (
+                                <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                </svg>
+                            )}
+                            {loading ? "Submitting..." : "Submit"}
                         </button>
                     </div>
 

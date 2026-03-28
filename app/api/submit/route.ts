@@ -8,7 +8,7 @@ const TEAM_ID = "5";
 const DISTRIBUTION_ID = "2";
 
 const PARTNER_MAP: Record<string, number> = {
-    "3": 226, // Test Source
+    "13": 226, // Test Source
     "1": 227, // Test Source 2
     "11": 219, // Best Money = Natural Intelligence
     "12": 223, // Top Rated Tax = MoonShot
